@@ -123,7 +123,7 @@
   export default {
     data () {
       return {
-        clipped: true,
+        clipped: false,
         drawer: false,
         fixed: false,
         scroll: 0,
