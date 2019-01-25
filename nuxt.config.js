@@ -7,7 +7,6 @@ const ctfConfig = getConfigForKeys([
   'CTF_CDA_ACCESS_TOKEN',
   'CTF_CMA_ACCESS_TOKEN',
   'CTF_PERSON_ID',
-  'CTF_PROTFOLIO_TYPE_ID'
 ])
 console.log(ctfConfig)
 console.log(process.env)

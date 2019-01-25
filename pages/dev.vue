@@ -39,7 +39,7 @@
     methods: {
       maths: function () {
         return posts.filter(function (item) {
-          return item.fields.category === 'maths'
+          return item.fields.category === 'dev'
   })
       }
     }
