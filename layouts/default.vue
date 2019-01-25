@@ -123,15 +123,15 @@
   export default {
     data () {
       return {
-        clipped: false,
+        clipped: true,
         drawer: false,
         fixed: false,
         scroll: 0,
         items: [
           { icon: 'home', title: 'Home', to: '/' },
-          { icon: 'library_books', title: 'Blogs', to: '/posts' }
-          // { icon: 'portrait', title: 'Showcases', to: '/showcases' },
-          // { icon: 'favorite', title: 'Side Projects', to: '/sideprojects' },
+          { icon: 'library_books', title: 'Blogs', to: '/posts' },
+          { icon: 'school', title: 'Maths', to: '/maths' },
+          { icon: 'computer', title: 'Web Dev', to: '/dev' },
         ],
         itemsExt: [
           { faIcon: 'github', title: 'David Git', to: 'https://github.com/DavidCouronne', target: '_blank' }
