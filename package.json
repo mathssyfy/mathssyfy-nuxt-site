@@ -1,8 +1,8 @@
 {
-  "name": "nuxt-starter-template",
-  "version": "1.0.0",
-  "description": "Nuxt.js project",
-  "author": "DavidCouronne <couronne.david@gmail.com>",
+  "name": "acadetetch",
+  "version": "1.0.3",
+  "description": "kelvinho.js.org personal website ",
+  "author": "Kelvin Ho <kelvinho84@gmail.com>",
   "private": true,
   "scripts": {
     "dev": "nuxt",
@@ -13,26 +13,33 @@
     "precommit": "npm run lint"
   },
   "dependencies": {
-    "@mathssyfy/markdown": "^1.2.10",
-    "@mathssyfy/markdown-it-highlightlines": "^1.2.1",
-    "@mathssyfy/markdown-it-linenumbers": "^1.2.1",
-    "@mathssyfy/markdown-it-loader": "^1.2.9",
-    "@mathssyfy/markdown-it-prewrapper": "^1.2.1",
-    "@mathssyfy/markdown-it-prism": "^1.2.1",
-    "@mathssyfy/plugin-markdown": "^1.2.1",
-    "@nuxtjs/markdownit": "^1.2.3",
-    "markdown-it-emoji": "^1.4.0",
-    "nuxt": "^2.3.4"
+    "@nuxtjs/google-tag-manager": "^2.0.0",
+    "contentful": "^5.1.3",
+    "contentful-management": "^3.4.0",
+    "nuxt": "^2.1.0",
+    "vue-markdown": "^2.2.4",
+    "vuetify": "^1.2.6"
   },
   "devDependencies": {
-    "@nuxtjs/markdownit-loader": "^1.1.1",
-    "babel-eslint": "^10.0.1",
-    "eslint": "^5.12.0",
-    "eslint-friendly-formatter": "^4.0.1",
-    "eslint-loader": "^2.1.1",
-    "eslint-plugin-vue": "^5.1.0",
-    "request": "^2.88.0",
+    "@fortawesome/fontawesome": "^1.1.8",
+    "@fortawesome/fontawesome-free-brands": "^5.0.9",
+    "@fortawesome/fontawesome-free-solid": "^5.0.13",
+    "@fortawesome/vue-fontawesome": "^0.0.23",
+    "babel-eslint": "^7.2.3",
+    "eslint": "^4.3.0",
+    "eslint-config-standard": "^10.2.1",
+    "eslint-friendly-formatter": "^3.0.0",
+    "eslint-loader": "^1.9.0",
+    "eslint-plugin-html": "^3.1.1",
+    "eslint-plugin-import": "^2.7.0",
+    "eslint-plugin-node": "^5.1.1",
+    "eslint-plugin-promise": "^3.5.0",
+    "eslint-plugin-standard": "^3.0.1",
+    "eslint-plugin-vue": "^4.0.0",
+    "node-sass": "^4.8.3",
+    "sass-loader": "^6.0.7",
     "stylus": "^0.54.5",
-    "stylus-loader": "^3.0.2"
+    "stylus-loader": "^3.0.1",
+    "vue-awesome-swiper": "^3.1.3"
   }
 }

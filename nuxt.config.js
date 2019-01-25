@@ -1,73 +1,52 @@
-const { renderHighlight } = require("@mathssyfy/markdown-it-loader/lib/renderHighlight.js");
+import { getConfigForKeys } from './lib/config.js'
+
+const ctfConfig = getConfigForKeys([
+  'CTF_BLOG_POST_TYPE_ID',
+  'CTF_PERSON_TYPE_ID',
+  'CTF_SPACE_ID',
+  'CTF_CDA_ACCESS_TOKEN',
+  'CTF_CMA_ACCESS_TOKEN',
+  'CTF_PERSON_ID',
+  'CTF_PROTFOLIO_TYPE_ID'
+])
+console.log(ctfConfig)
+console.log(process.env)
+
+const {createClient} = require('./plugins/contentful')
+const cdaClient = createClient(ctfConfig)
+const cmaContentful = require('contentful-management')
+const cmaClient = cmaContentful.createClient({
+  accessToken: ctfConfig.CTF_CMA_ACCESS_TOKEN
+})
 
 module.exports = {
   /*
-   ** Headers of the page
-   */
-  css: [
-    '@/assets/styles/theme.styl',
-    'prismjs/themes/prism-dark.css'
-  ],
+  ** Headers of the page
+  */
   head: {
-    title: 'nuxt-starter-template',
-    meta: [{
-        charset: 'utf-8'
-      },
-      {
-        name: 'viewport',
-        content: 'width=device-width, initial-scale=1'
-      },
-      {
-        hid: 'description',
-        name: 'description',
-        content: 'Nuxt.js project'
-      }
+    title: 'AcadeTech',
+    meta: [
+      { charset: 'utf-8' },
+      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+      { hid: 'description', name: 'description', content: 'kelvinho.js.org personal website ' }
     ],
-    link: [{
-      rel: 'icon',
-      type: 'image/x-icon',
-      href: '/favicon.ico'
-    }]
-  },
-  /*
-   ** Customize the progress bar color
-   */
-  loading: {
-    color: '#3B8070'
-  },
-  /*
-   ** Build configuration
-   */
-  modules: [
-     '@mathssyfy/markdown'
-  ],
-  markdownit: {
-    preset: 'default',
-    linkify: true,
-    breaks: true,
-    highlight: renderHighlight,
-    
-    use: [     
-      'markdown-it-emoji',
-      "@mathssyfy/markdown-it-highlightlines",
-      "@mathssyfy/markdown-it-prewrapper",
-      "@mathssyfy/markdown-it-linenumbers"
+    link: [
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons' }
     ]
   },
-  
-  plugins: [
-    '~/plugins/global-components-loader.js',
-    '@/plugins/global.js'
-  ],
+  /*
+  ** Customize the progress bar color
+  */
+  loading: { color: '#3B8070' },
+  /*
+  ** Build configuration
+  */
   build: {
-    /*
-     ** Run ESLint on save
-     */
-    extend(config, {
-      isDev,
-      isClient
-    }) {
-      if (isDev && isClient) {
+    extractCSS: true,
+    transpile: [/^vuetify/],
+    extend (config, {isDev}) {
+      if (isDev && process.client) {
         config.module.rules.push({
           enforce: 'pre',
           test: /\.(js|vue)$/,
@@ -76,6 +55,58 @@ module.exports = {
         })
       }
     }
+  },
+  modules: [
+    ['@nuxtjs/google-tag-manager', {
+      id: 'GTM-PL9TSHZ',
+      layer: 'dataLayer',
+      pageTracking: true
+    }]
+  ],
+  css: [
+    '~assets/style/app.styl',
+    'swiper/dist/css/swiper.css'
+  ],
+  plugins: [
+    '~/plugins/contentful',
+    '~/plugins/vuetify',
+    '~/plugins/fontawesome',
+    {
+      src: '~/plugins/vue-awesome-swiper',
+      ssr: false
+    }
+  ],
+  generate: {
+    routes () {
+      return Promise.all([
+        // get all blog posts
+        cdaClient.getEntries({
+          'content_type': ctfConfig.CTF_BLOG_POST_TYPE_ID
+        }),
+        // get the blog post content type
+        cmaClient.getSpace(ctfConfig.CTF_SPACE_ID)
+          .then(space => space.getContentType(ctfConfig.CTF_BLOG_POST_TYPE_ID))
+      ])
+        .then(([entries, postType]) => {
+          return [
+          // map entries to URLs
+            ...entries.items.map(entry => `/posts/${entry.fields.slug}`)
+          // map all possible tags to URLs
+          ]
+        })
+    }
+  },
+  /*
+  ** Define environment variables being available
+  ** in generate and browser context
+  */
+  env: {
+    CTF_SPACE_ID: ctfConfig.CTF_SPACE_ID,
+    CTF_CDA_ACCESS_TOKEN: ctfConfig.CTF_CDA_ACCESS_TOKEN,
+    CTF_CMA_ACCESS_TOKEN: ctfConfig.CTF_CMA_ACCESS_TOKEN,
+    CTF_PERSON_ID: ctfConfig.CTF_PERSON_ID,
+    CTF_BLOG_POST_TYPE_ID: ctfConfig.CTF_BLOG_POST_TYPE_ID,
+    CTF_PERSON_TYPE_ID: ctfConfig.CTF_PERSON_TYPE_ID,
+    CTF_PROTFOLIO_TYPE_ID: ctfConfig.CTF_PROTFOLIO_TYPE_ID
   }
 }
-
