@@ -8,7 +8,7 @@
        dark
        large
        outline round
-       href="/showcases"
+       href="/maths"
      >
        {{btnText}}
      </v-btn>
@@ -20,9 +20,9 @@
   export default {
     data () {
       return {
-        mainTitle: 'Web development has never been easier',
-        subTitle: 'Kick-start your application today',
-        btnText: 'Get Started',
+        mainTitle: 'Mathematics  Web Developpement are never been easier',
+        subTitle: 'Kick-start your learning curve',
+        btnText: 'Get Started'
       }
     }
   }

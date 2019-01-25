@@ -9,7 +9,7 @@
       <v-flex xs12 md12 >
         <h1 class="main-title text-xs-center">{{mainTitle}}</h1>
       </v-flex>
-      <v-flex xs12 md4 offset-md1 class="text-xs-center"> WE ARE </v-flex >
+      <v-flex xs12 md4 offset-md1 class="text-xs-center"> @MATHSSYFY </v-flex >
       <v-flex xs12 md6 class="rw-words rw-words-1 text-xs-center ">
         <v-flex xs6 v-for="header in subHeader" :key="header">{{header}}</v-flex>
       </v-flex>
@@ -33,10 +33,10 @@
   export default {
     data () {
       return {
-        mainTitle: 'FULL WEBSITE SOLUTIONS',
-        subTitle: 'Web & Mobile development',
+        mainTitle: 'MATHS & WEB DEV',
+        subTitle: 'Maths, Python, Web Dev',
         btnText: 'Get Started',
-        subHeader: ['Solution provider', 'EStore', 'blockchain', 'Tech Solution']
+        subHeader: ['Learning Is Life']
       }
     }
   }

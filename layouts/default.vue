@@ -108,7 +108,7 @@
           <div class="grey--text darken-2 ml-3">
             Made with
             <v-icon class="green--text">favorite</v-icon>
-            by <a href="https://github.com/kelvin2go/"> Kelvin Ho</a> - 2018
+            by <a href="https://github.com/DavidCouronne"> David Couronné</a> - 2019
           </div>
         </v-flex>
       </v-layout>
@@ -129,17 +129,17 @@
         scroll: 0,
         items: [
           { icon: 'home', title: 'Home', to: '/' },
-          { icon: 'library_books', title: 'Blogs', to: '/posts' },
-          { icon: 'portrait', title: 'Showcases', to: '/showcases' },
-          { icon: 'favorite', title: 'Side Projects', to: '/sideprojects' },
+          { icon: 'library_books', title: 'Blogs', to: '/posts' }
+          // { icon: 'portrait', title: 'Showcases', to: '/showcases' },
+          // { icon: 'favorite', title: 'Side Projects', to: '/sideprojects' },
         ],
         itemsExt: [
-          { faIcon: 'github', title: 'David Git', to: 'https://github.com/kelvin2go', target: '_blank' },
+          { faIcon: 'github', title: 'David Git', to: 'https://github.com/DavidCouronne', target: '_blank' }
         ],
         miniVariant: false,
         right: true,
         rightDrawer: false,
-        title: 'AcadeTech'
+        title: 'AcadeTech@mathssyfy'
       }
     },
     methods: {

@@ -73,11 +73,11 @@
       }
     },
     computed: {
-      filtersCase: function() {
+      filtersCase: function () {
         let filtered = []
-        if (this.pickedTags.length > 0){
-          Object.keys(this.showcases).forEach( (key) => {
-            if(this.showcases[key].fields.tags.filter( (val) => -1 !== this.pickedTags.indexOf(val)).length > 0 ){
+        if (this.pickedTags.length > 0) {
+          Object.keys(this.showcases).forEach((key) => {
+            if (this.showcases[key].fields.tags.filter((val) => this.pickedTags.indexOf(val) !== -1).length > 0) {
               filtered.push(this.showcases[key])
             }
           })
@@ -85,14 +85,14 @@
         }
         return this.showcases
       },
-      filterTags: function(){
+      filterTags: function () {
         let tags = []
-        this.showcases.forEach( (val) => {
+        this.showcases.forEach((val) => {
           tags = tags.concat(val.fields.tags)
         })
         return {
           tags: Array.from(new Set(tags)).sort()
-        };
+        }
       }
     },
     asyncData ({env}) {
@@ -114,8 +114,8 @@
       }).catch(console.error)
     },
     methods: {
-      setShow: function(id){
-        this.$set(this.show, id, !this.show[id] )
+      setShow: function (id) {
+        this.$set(this.show, id, !this.show[id])
       },
       pushTags: function (tag) {
         if (this.pickedTags.indexOf(tag) === -1) {
@@ -130,7 +130,7 @@
         return (new Date(date)).getFullYear()
       },
       cap: (str) => {
-        return str.replace(/\w\S*/g, function(tStr)	{
+        return str.replace(/\w\S*/g, function (tStr)	{
           return tStr.charAt(0).toUpperCase() + tStr.substr(1).toLowerCase()
         })
       }

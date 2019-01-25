@@ -40,16 +40,16 @@
   import VMarkdown from 'vue-markdown'
   export default {
     props: ['portfolio'],
-    data() {
+    data () {
       return {
         imageHeight: 0
       }
     },
     created: function () {
     },
-    mounted() {
-      this.imageHeight = this.$refs.img.clientHeight;
-    },
+    mounted () {
+      this.imageHeight = this.$refs.img.clientHeight
+  },
     filters: {
       getFullYear: (date) => {
         return (new Date(date)).getFullYear()
@@ -59,10 +59,10 @@
       },
       company: (name) => {
         if (!name) return ''
-        return " in " +name
+        return ' in ' + name
       },
       cap: (str) => {
-        return str.replace(/\w\S*/g, function(tStr)	{
+        return str.replace(/\w\S*/g, function (tStr)	{
       		return tStr.charAt(0).toUpperCase() + tStr.substr(1).toLowerCase()
       	})
       }

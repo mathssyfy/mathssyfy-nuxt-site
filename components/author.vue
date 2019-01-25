@@ -26,7 +26,7 @@
       },
       company: (name) => {
         if (!name) return ''
-        return " @ " +name
+        return ' @ ' + name
       }
     }
   }

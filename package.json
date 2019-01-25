@@ -1,8 +1,8 @@
 {
   "name": "acadetetch",
   "version": "1.0.3",
-  "description": "kelvinho.js.org personal website ",
-  "author": "Kelvin Ho <kelvinho84@gmail.com>",
+  "description": "nuxt vuetify template",
+  "author": "David Couronné <couronne.david@gmail.com>",
   "private": true,
   "scripts": {
     "dev": "nuxt",

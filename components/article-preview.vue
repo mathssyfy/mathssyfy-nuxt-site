@@ -37,7 +37,7 @@
     created: function () {
     },
     computed: {
-      author: function() {
+      author: function () {
         if (this.post) return this.post.fields.author.fields
       }
     },
@@ -47,7 +47,7 @@
       },
       company: (name) => {
         if (!name) return ''
-        return " in " +name
+        return ' in ' + name
       }
     }
   }

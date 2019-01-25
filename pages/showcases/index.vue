@@ -40,7 +40,7 @@
   const client = createClient()
 
   export default {
-    data() {
+    data () {
       const self = this
       return {
         slideIndex: 0,
@@ -57,7 +57,7 @@
             stretch: 0,
             depth: 100,
             modifier: 1,
-            slideShadows : true
+            slideShadows: true
           },
           pagination: {
             el: '.swiper-pagination',
@@ -68,16 +68,16 @@
               self.slideIndex = this.activeIndex
             }
           }
-        },
+        }
       }
     },
     computed: {
-      filtersCase: function() {
+      filtersCase: function () {
         let filtered = []
-        if (this.pickedTags.length > 0){
-          Object.keys(this.showcases).forEach( (key) => {
-            if( this.pickedTags.indexOf(this.showcases[key].fields.company) > -1 ||
-            this.showcases[key].fields.tags.filter( (val) => -1 !== this.pickedTags.indexOf(val)).length > 0 ){
+        if (this.pickedTags.length > 0) {
+          Object.keys(this.showcases).forEach((key) => {
+            if (this.pickedTags.indexOf(this.showcases[key].fields.company) > -1 ||
+            this.showcases[key].fields.tags.filter((val) => this.pickedTags.indexOf(val) !== -1).length > 0) {
               filtered.push(this.showcases[key])
             }
           })
@@ -85,10 +85,10 @@
         }
         return this.showcases
       },
-      filterTags: function(){
+      filterTags: function () {
         let company = []
         let tags = []
-        this.showcases.forEach( (val) => {
+        this.showcases.forEach((val) => {
           if (company.indexOf(val.fields.company) === -1) {
             company.push(val.fields.company)
           }
@@ -97,14 +97,14 @@
         return {
           company,
           tags: Array.from(new Set(tags)).sort()
-        };
+        }
       },
-      currentCase: function() {
+      currentCase: function () {
         return this.showcases[this.slideIndex] || null
       }
     },
-    mounted() {
-      this.mySwiper.slideTo(parseInt(this.showcases.length/2), 1000, false)
+    mounted () {
+      this.mySwiper.slideTo(parseInt(this.showcases.length / 2), 1000, false)
     },
     asyncData ({env}) {
       return Promise.all([

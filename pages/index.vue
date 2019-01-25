@@ -140,6 +140,7 @@ export default {
         { text: 'Everybody is a genius. But if you judge a fish by its ability to climb a tree, it will live its whole life believing that it is stupid.', author: 'Albert Einstein'},
         { text: 'If you want to live a happy life, tie it to a goal, not to people or things.', author: 'Albert Einstein'},
         { text: 'If we want to change the world, we change ourselves ... Change the world is maybe Obama\'s job.', author: 'Jack Ma'},
+        {text: 'Vous avez de la pâte ? Vous avez du sucre ? Avec la pâte, vous faites une crêpe et vous mettez du sucre dessus !', author: 'Les Bronzés Font du Sky'}
       ]
     }
   },

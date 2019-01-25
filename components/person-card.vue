@@ -32,7 +32,7 @@
           facebook: 'https://facebook.com/',
           linkedin: 'https://www.linkedin.com/in/',
           github: 'https://github.com/',
-          twitter: 'https://twitter.com/',
+          twitter: 'https://twitter.com/'
         }
       }
     },
