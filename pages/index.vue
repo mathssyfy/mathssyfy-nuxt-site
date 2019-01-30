@@ -1,19 +1,14 @@
 <template>
   <div class="sec-container">
     <section>
-      <v-layout
-        column
-        wrap
-        class="my-5"
-        align-center
-      >
+      <v-layout column wrap class="my-5" align-center>
         <v-flex xs12 class="midContainer">
           <v-container grid-list-xl>
             <v-layout row wrap align-center>
               <v-flex xs12 md4>
                 <v-card class="elevation-0 transparent">
                   <v-card-text class="text-xs-center">
-                    <img src="/img/nuxt-logo.png" width="40" height="40"/>
+                    <img src="/img/nuxt-logo.png" width="40" height="40">
                   </v-card-text>
                   <v-card-title primary-title class="layout justify-center">
                     <div class="headline text-xs-center">NUXT.js</div>
@@ -22,7 +17,13 @@
                     Nuxt.js presets all the configuration needed to make your development of a Vue.js Application Server Rendered more enjoyable.
                     As a framework, Nuxt.js comes with a lot of features to help you in your development between the client side and the server side such as Asynchronous Data, Middleware, Layouts, etc.
                     <v-card-text class="text-xs-center">
-                      <v-btn outline round color="success" href="https://nuxtjs.org/" target="_blank">NUXT</v-btn>
+                      <v-btn
+                        outline
+                        round
+                        color="success"
+                        href="https://nuxtjs.org/"
+                        target="_blank"
+                      >NUXT</v-btn>
                     </v-card-text>
                   </v-card-text>
                 </v-card>
@@ -30,7 +31,7 @@
               <v-flex xs12 md4>
                 <v-card class="elevation-0 transparent">
                   <v-card-text class="text-xs-center">
-                    <img src="/img/vuetify-logo.svg" width="40" height="40"/>
+                    <img src="/img/vuetify-logo.svg" width="40" height="40">
                   </v-card-text>
                   <v-card-title primary-title class="layout justify-center">
                     <div class="headline">Vuetify</div>
@@ -39,7 +40,13 @@
                     Semantic Material Components
                     Be prepared for an armada of specialized components at your disposal. With over 80 in total, there is a solution for any application.
                     <v-card-text class="text-xs-center">
-                      <v-btn outline round color="info" href="https://vuetifyjs.com/en/" target="_blank">Vuetify</v-btn>
+                      <v-btn
+                        outline
+                        round
+                        color="info"
+                        href="https://vuetifyjs.com/en/"
+                        target="_blank"
+                      >Vuetify</v-btn>
                     </v-card-text>
                   </v-card-text>
                 </v-card>
@@ -47,7 +54,7 @@
               <v-flex xs12 md4>
                 <v-card class="elevation-0 transparent">
                   <v-card-text class="text-xs-center">
-                    <img src="/img/contentful-logo.svg" width="40" height="40"/>
+                    <img src="/img/contentful-logo.svg" width="40" height="40">
                   </v-card-text>
                   <v-card-title primary-title class="layout justify-center">
                     <div class="headline">Contentful</div>
@@ -57,7 +64,13 @@
                     nuxt + contentful have no harzzel on server content now. Fast. Flexible. Future-proof. It's everything your CMS isn't.
                     Developers work with the tools they love. Content creators work with the structure they need.
                     <v-card-text class="text-xs-center">
-                      <v-btn outline round color="error" href="https://www.contentful.com/developers/docs/javascript/tutorials/integrate-contentful-with-vue-and-nuxt/" target="_blank">Contentful</v-btn>
+                      <v-btn
+                        outline
+                        round
+                        color="error"
+                        href="https://www.contentful.com/developers/docs/javascript/tutorials/integrate-contentful-with-vue-and-nuxt/"
+                        target="_blank"
+                      >Contentful</v-btn>
                     </v-card-text>
                   </v-card-text>
                 </v-card>
@@ -65,8 +78,8 @@
             </v-layout>
           </v-container>
         </v-flex>
-        <v-flex>
-          <div>
+       
+          <!-- <div>
             <div v-swiper:mySwiper="swiperOption" class="swiper">
               <div class="parallax-bg" slot="parallax-bg" data-swiper-parallax="-23%"></div>
               <div class="swiper-wrapper">
@@ -82,8 +95,21 @@
               <div class="swiper-button-prev swiper-button-white" slot="button-prev"></div>
               <div class="swiper-button-next swiper-button-white" slot="button-next"></div>
             </div>
-          </div>
-        </v-flex>
+          </div>-->
+          <v-carousel hide-delimiters hide-controls>
+            <v-carousel-item v-for="(item,i) in quotes" :key="i">
+              <v-card>
+                <v-img
+          :src="item.scr"
+          height="200px"
+        >
+        </v-img>
+                <v-card-title>{{item.author}}</v-card-title>
+                <v-card-text>{{item.text}}</v-card-text>
+              </v-card>
+            </v-carousel-item>
+          </v-carousel>
+       
       </v-layout>
     </section>
     <section>
@@ -91,31 +117,43 @@
         <v-container fluid grid-list-md>
           <v-layout row wrap>
             <v-flex xs10 md4 sm4 offset-xs1 v-for="person in persons" :key="person.id">
-              <PersonCard v-if="person" :person="person" />
+              <PersonCard v-if="person" :person="person"/>
             </v-flex>
           </v-layout>
         </v-container>
       </v-card>
     </section>
     <section>
-      <Parallax />
+      <Parallax/>
     </section>
-
   </div>
-
 </template>
 
 <script>
-import {createClient} from '@/plugins/contentful.js'
-import AppLogo from '@/components/AppLogo.vue'
-import Parallax from '@/components/parallax-sub.vue'
-import PersonCard from '@/components/person-card.vue'
+import { createClient } from "@/plugins/contentful.js";
+import AppLogo from "@/components/AppLogo.vue";
+import Parallax from "@/components/parallax-sub.vue";
+import PersonCard from "@/components/person-card.vue";
 
-const client = createClient()
+const client = createClient();
 
 export default {
-  data () {
+  data() {
     return {
+      items: [
+        {
+          src: "https://cdn.vuetifyjs.com/images/carousel/squirrel.jpg"
+        },
+        {
+          src: "https://cdn.vuetifyjs.com/images/carousel/sky.jpg"
+        },
+        {
+          src: "https://cdn.vuetifyjs.com/images/carousel/bird.jpg"
+        },
+        {
+          src: "https://cdn.vuetifyjs.com/images/carousel/planet.jpg"
+        }
+      ],
       swiperOption: {
         speed: 2000,
         parallax: true,
@@ -124,75 +162,114 @@ export default {
           disableOnInteraction: true
         },
         pagination: {
-          el: '.swiper-pagination',
+          el: ".swiper-pagination",
           clickable: true
         },
         navigation: {
-          nextEl: '.swiper-button-next',
-          prevEl: '.swiper-button-prev'
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev"
         }
       },
       quotes: [
-        { text: 'We\'re just enthusiastic about what we do.', author: 'Steve Jobs' },
-        { text: 'The further you get away from yourself, the more challenging it is. Not to be in your comfort zone is great fun.', author: 'Benedict Cumberbatch' },
-        { text: 'You never fail until you stop trying.', author: 'Albert Einstein' },
-        { text: 'You can never solve a problem on the level on which it was created.', author: 'Albert Einstein'},
-        { text: 'Everybody is a genius. But if you judge a fish by its ability to climb a tree, it will live its whole life believing that it is stupid.', author: 'Albert Einstein'},
-        { text: 'If you want to live a happy life, tie it to a goal, not to people or things.', author: 'Albert Einstein'},
-        { text: 'If we want to change the world, we change ourselves ... Change the world is maybe Obama\'s job.', author: 'Jack Ma'},
-        {text: 'Vous avez de la pâte ? Vous avez du sucre ? Avec la pâte, vous faites une crêpe et vous mettez du sucre dessus !', author: 'Les Bronzés Font du Sky'}
+        {
+          text: "We're just enthusiastic about what we do.",
+          author: "Steve Jobs",
+          src: 'https://cdn.vuetifyjs.com/images/carousel/squirrel.jpg'
+        },
+        {
+          text:
+            "The further you get away from yourself, the more challenging it is. Not to be in your comfort zone is great fun.",
+          author: "Benedict Cumberbatch",
+          src: "https://cdn.vuetifyjs.com/images/carousel/sky.jpg"
+        },
+        {
+          text: "You never fail until you stop trying.",
+          author: "Albert Einstein",
+          src: "https://cdn.vuetifyjs.com/images/carousel/bird.jpg"
+        },
+        {
+          text:
+            "You can never solve a problem on the level on which it was created.",
+          author: "Albert Einstein",
+          src: "https://cdn.vuetifyjs.com/images/carousel/planet.jpg"
+        },
+        {
+          text:
+            "Everybody is a genius. But if you judge a fish by its ability to climb a tree, it will live its whole life believing that it is stupid.",
+          author: "Albert Einstein",
+          src: 'https://cdn.vuetifyjs.com/images/carousel/squirrel.jpg'
+        },
+        {
+          text:
+            "If you want to live a happy life, tie it to a goal, not to people or things.",
+          author: "Albert Einstein",
+          src: 'https://cdn.vuetifyjs.com/images/carousel/squirrel.jpg'
+        },
+        {
+          text:
+            "If we want to change the world, we change ourselves ... Change the world is maybe Obama's job.",
+          author: "Jack Ma",
+          src: 'https://cdn.vuetifyjs.com/images/carousel/squirrel.jpg'
+        },
+        {
+          text:
+            "Vous avez de la pâte ? Vous avez du sucre ? Avec la pâte, vous faites une crêpe et vous mettez du sucre dessus !",
+          author: "Les Bronzés Font du Sky",
+          src: 'https://cdn.vuetifyjs.com/images/carousel/squirrel.jpg'
+        }
       ]
-    }
+    };
   },
   // `env` is available in the context object
-  asyncData ({env}) {
+  asyncData({ env }) {
     return Promise.all([
       // fetch the owner of the blog
       client.getEntries({
-        'sys.id': env.CTF_PERSON_ID
+        "sys.id": env.CTF_PERSON_ID
       }),
       // fetch all blog posts sorted by creation date
       client.getEntries({
-        'content_type': env.CTF_PERSON_TYPE_ID,
-        order: '-sys.createdAt'
+        content_type: env.CTF_PERSON_TYPE_ID,
+        order: "-sys.createdAt"
       })
-    ]).then(([entries, persons]) => {
-      // return data that should be available
-      // in the template
-      return {
-        author: entries.items[0],
-        persons: persons.items
-      }
-    }).catch(console.error)
+    ])
+      .then(([entries, persons]) => {
+        // return data that should be available
+        // in the template
+        return {
+          author: entries.items[0],
+          persons: persons.items
+        };
+      })
+      .catch(console.error);
   },
   components: {
     AppLogo,
     Parallax,
     PersonCard
   }
-}
+};
 </script>
 
 <style lang="scss" scoped>
-.sec-container{
+.sec-container {
   margin-top: 520px;
-  
 }
 .midContainer {
   border-radius: 5px;
   background-color: #fff;
   width: 85%;
   margin: -80px auto 0;
-  box-shadow: 20px 20px 50px rgba(0,0,0,.16);
+  box-shadow: 20px 20px 50px rgba(0, 0, 0, 0.16);
   z-index: 200;
   .container {
     min-height: auto;
   }
 }
-.banner-title{
+.banner-title {
   font-size: 36px;
 }
-.banner-subtitle{
+.banner-subtitle {
   padding-top: 10px;
   font-size: 18px;
 }
@@ -217,12 +294,12 @@ export default {
 
   .swiper-slide {
     font-size: 18px;
-    color:#fff;
+    color: #fff;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
     padding: 40px 60px;
-    background-color: transparent!important;
-    justify-content: space-around!important;
+    background-color: transparent !important;
+    justify-content: space-around !important;
     min-height: 480px;
     .title {
       font-size: 41px !important;

@@ -16,7 +16,7 @@
 </template>
 
 <script>
-  import Author from '~/components/author.vue'
+  import Author from 'author.vue'
   import VMarkdown from 'vue-markdown'
 
   export default {

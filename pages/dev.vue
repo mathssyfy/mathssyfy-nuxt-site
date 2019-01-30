@@ -4,7 +4,7 @@
     <!-- render blog posts -->
     <ul style="padding: 64px 0px 0px;">
       <li v-for="post in posts" :key="post.slug">
-        <article-preview v-if='post.fields.category==="maths"' article-preview :post="post"></article-preview>
+        <article-preview v-if='post.fields.category==="dev"' article-preview :post="post"></article-preview>
       </li>
     </ul>
   </div>

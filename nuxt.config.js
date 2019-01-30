@@ -6,12 +6,12 @@ const ctfConfig = getConfigForKeys([
   'CTF_SPACE_ID',
   'CTF_CDA_ACCESS_TOKEN',
   'CTF_CMA_ACCESS_TOKEN',
-  'CTF_PERSON_ID',
+  'CTF_PERSON_ID'
 ])
 console.log(ctfConfig)
 console.log(process.env)
 
-const {createClient} = require('./plugins/contentful')
+const { createClient } = require('./plugins/contentful')
 const cdaClient = createClient(ctfConfig)
 const cmaContentful = require('contentful-management')
 const cmaClient = cmaContentful.createClient({
@@ -44,7 +44,7 @@ module.exports = {
   build: {
     extractCSS: true,
     transpile: [/^vuetify/],
-    extend (config, {isDev}) {
+    extend (config, { isDev }) {
       if (isDev && process.client) {
         config.module.rules.push({
           enforce: 'pre',
