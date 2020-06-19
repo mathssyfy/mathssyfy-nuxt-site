@@ -10,7 +10,9 @@
     "start": "nuxt start",
     "generate": "nuxt generate",
     "lint": "eslint --ext .js,.vue --ignore-path .gitignore .",
-    "precommit": "npm run lint"
+    "precommit": "npm run lint",
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
   },
   "dependencies": {
     "@mathssyfy/markdown-it-anchor": "^1.3.12",
@@ -25,18 +27,19 @@
     "markdown-it-table-of-contents": "^0.4.3",
     "nuxt": "^2.4.2",
     "vue-markdown": "^2.2.4",
-    "vuetify": "^1.4.4"
+    "vuetify": "^1.4.4",
+    "snyk": "^1.345.1"
   },
   "devDependencies": {
     "@fortawesome/fontawesome": "^1.1.8",
     "@fortawesome/fontawesome-free-brands": "^5.0.9",
     "@fortawesome/fontawesome-free-solid": "^5.0.13",
     "@fortawesome/vue-fontawesome": "^0.1.5",
-    
     "node-sass": "^4.8.3",
     "sass-loader": "^7.1.0",
     "stylus": "^0.54.5",
     "stylus-loader": "^3.0.1",
     "vue-awesome-swiper": "^3.1.3"
-  }
+  },
+  "snyk": true
 }
